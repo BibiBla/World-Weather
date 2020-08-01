@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>World Weather</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -13,6 +13,41 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div class="container">
+      <div class="weatherapp">
+        <div class="row">
+          <div class="col-7">
+            <h1>World Weather</h1>
+          </div>
+          <div class="col-4 time-day">
+            <div class="day">Sunday</div>
+            <div class="time">20:15</div>
+          </div>
+        </div>
+        <button class="btn btn-outline-success btn-sm">
+          🌍 Your location 🌎
+        </button>
+
+        <form class="search-form">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <input
+                  type="city"
+                  class="form-control"
+                  id="city-input"
+                  placeholder="City"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-success">
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
