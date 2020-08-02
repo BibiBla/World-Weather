@@ -53,12 +53,12 @@
         </form>
         <h2 class="currentCity">Hamburg</h2>
         <div class="row conditions">
-          <div class="col-3">
-            <p class="description">sunny</p>
-            <p class="temperature">20°C|°F</p>
+          <div class="col-4">
+            <div class="description">sunny</div>
+            <div class="temperature">20 <span class="degree">°C|°F</span></div>
           </div>
           <div class="col-2 symbol">☀️</div>
-          <div class="col-2">
+          <div class="col-3">
             <div class="max-min">
               <div class="max">🌡 max</div>
               <div class="max-degree" id="max-temp">
@@ -70,8 +70,9 @@
               </div>
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-3">
             <div class="wind">
+              <div class="windspeed">Windspeed</div>
               <div class="wind-symbol">
                 💨<span class="windstrength" id="windspeed">
                   6<span class="km">km/h</span>
@@ -79,6 +80,7 @@
               </div>
             </div>
             <div class="humidity">
+              <div class="humidityValue">Humidity</div>
               <div class="drop">
                 💧<span class="hum-value" id="humidity"
                   >80<span class="hum-percent">%</span></span

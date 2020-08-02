@@ -16,9 +16,10 @@ h1 {
 }
 h2 {
   font-weight: 300;
+  font-size: 40px;
 }
 h3 {
-  font-weight: 300;
+  font-weight: 400;
 }
 .time-day {
   float: right;
@@ -34,8 +35,22 @@ h3 {
 }
 .conditions {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   text-align: center;
+  font-weight: 300;
+}
+.temperature {
+  font-size: 52px;
+  font-weight: 400;
+}
+.degree {
+  font-size: 20px;
+}
+.symbol {
+  font-size: 56px;
+}
+.wind {
+  margin-bottom: 10px;
 }
 
 .forecast {
