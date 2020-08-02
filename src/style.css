@@ -22,3 +22,8 @@ h1 {
 .search-form {
   margin-top: 10px;
 }
+
+.forecast {
+  margin-left: 30px;
+  text-align: center;
+}
