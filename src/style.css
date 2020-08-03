@@ -50,8 +50,19 @@ h3 {
 .symbol {
   font-size: 56px;
 }
-.wind {
+.wind,
+.max {
   margin-bottom: 10px;
+}
+.windstrength,
+.hum-value {
+  margin-left: 5px;
+}
+.max-degree,
+.celsius-max,
+.min-degree,
+.celsius-min {
+  display: inline;
 }
 
 .forecast {

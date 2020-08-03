@@ -28,12 +28,21 @@ function formatTime(timestamp) {
 function displayTemperature(response) {
   console.log(response);
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city");
-  city.innerHTML = response.data.name;
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].description;
+  let tempMax = document.querySelector("#max-temp");
+  let tempMin = document.querySelector("#min-temp");
+  let windspeed = document.querySelector("#windspeed");
+  let humidity = document.querySelector("#humidity");
   let icon = document.querySelector("#icon");
+
+  temperature.innerHTML = Math.round(response.data.main.temp);
+  city.innerHTML = response.data.name;
+  description.innerHTML = response.data.weather[0].description;
+  tempMax.innerHTML = Math.round(response.data.main.temp_max);
+  tempMin.innerHTML = Math.round(response.data.main.temp_min);
+  windspeed.innerHTML = Math.round(response.data.wind.speed);
+  humidity.innerHTML = Math.round(response.data.main.humidity);
   icon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
