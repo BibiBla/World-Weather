@@ -1,5 +1,5 @@
-function formatTime(timestamp) {
-  let date = new Date(timestamp);
+function formatTime() {
+  let date = new Date();
   console.log(date);
   let hours = date.getHours();
   if (hours < 10) {
@@ -24,6 +24,8 @@ function formatTime(timestamp) {
 
   return `${hours}:${minutes}`;
 }
+let currentTime = document.querySelector("#time");
+currentTime.innerHTML = formatTime();
 
 function displayTemperature(response) {
   console.log(response);
@@ -34,7 +36,6 @@ function displayTemperature(response) {
   let tempMin = document.querySelector("#min-temp");
   let windspeed = document.querySelector("#windspeed");
   let humidity = document.querySelector("#humidity");
-  let time = document.querySelector("#time");
   let icon = document.querySelector("#icon");
 
   temperature.innerHTML = Math.round(response.data.main.temp);
@@ -44,7 +45,6 @@ function displayTemperature(response) {
   tempMin.innerHTML = Math.round(response.data.main.temp_min);
   windspeed.innerHTML = Math.round(response.data.wind.speed);
   humidity.innerHTML = Math.round(response.data.main.humidity);
-  time.innerHTML = formatTime(response.data.dt * 1000);
   icon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`

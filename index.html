@@ -20,38 +20,26 @@
   <body>
     <div class="container">
       <div class="weatherapp">
-        <div class="row">
-          <div class="col-7">
-            <h1>World Weather</h1>
-          </div>
-          <div class="col-4 time-day" id="date">
-            <div class="day" id="day">Sunday</div>
-            <div class="time" id="time">20:15</div>
-          </div>
-        </div>
+        <h1>World Weather</h1>
         <button class="btn btn-outline-success btn-sm" id="location">
           🌍 Your location 🌎
         </button>
+        <div class="time-day" id="date">
+          <div class="day" id="day">Sunday</div>
+          <div class="time" id="time">20:15</div>
+        </div>
 
         <form class="search-form" id="search-form">
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <input
-                  type="search"
-                  class="form-control"
-                  id="city-input"
-                  placeholder="City"
-                  autocomplete="off"
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-success">
-                Search
-              </button>
-            </div>
-          </div>
+          <input
+            type="search"
+            class="form-control"
+            id="city-input"
+            placeholder="City"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-success">
+            Search
+          </button>
         </form>
         <h2 class="currentCity" id="city">Hamburg</h2>
         <div class="row conditions">
