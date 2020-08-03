@@ -33,6 +33,9 @@ h3 {
   margin-top: 10px;
   margin-bottom: 20px;
 }
+.currentCity {
+  text-transform: capitalize;
+}
 .conditions {
   margin-top: 10px;
   margin-bottom: 40px;
