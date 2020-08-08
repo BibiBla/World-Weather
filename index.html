@@ -21,7 +21,7 @@
     <div class="container">
       <div class="weatherapp">
         <h1>World Weather</h1>
-        <button class="btn btn-outline-success btn-sm" id="location">
+        <button class="btn btn-outline-primary btn-sm" id="location">
           🌍 Your location 🌎
         </button>
         <div class="time-day" id="date">
@@ -37,7 +37,7 @@
             placeholder="City"
             autocomplete="off"
           />
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn btn-primary">
             Search
           </button>
         </form>
@@ -48,7 +48,9 @@
             <div class="temperature" id="temperature">
               20
             </div>
-            <span class="degree">°C|°F</span>
+            <a href="#" class="active" id="celsius">°C </a>
+            <span>|</span>
+            <a href="#" id="fahrenheit">°F</a>
           </div>
           <div class="col-2 symbol">
             <img
@@ -64,12 +66,12 @@
                   🌡 max
                 </div>
                 <div class="max-degree" id="max-temp">27</div>
-                <div class="celsius-max">°C</div>
+                <div class="celsius-max" id="celsius-max">°C</div>
               </div>
               <div class="min">
                 <div class="min-symbol">❄️ min</div>
                 <div class="min-degree" id="min-temp">9</div>
-                <div class="celsius-min">°C</div>
+                <div class="celsius-min" id="celsius-min">°C</div>
               </div>
             </div>
           </div>

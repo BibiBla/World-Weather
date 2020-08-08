@@ -70,6 +70,12 @@ h3 {
   margin-bottom: 10px;
 }
 .windstrength,
+.hum-value,
+.km,
+.hum-percent {
+  font-weight: 500;
+}
+.windstrength,
 .hum-value {
   margin-left: 5px;
 }
@@ -88,4 +94,13 @@ h3 {
 
 .linkMe {
   text-align: center;
+}
+
+.active {
+  color: black;
+  cursor: default;
+}
+.active:hover {
+  text-decoration: none;
+  color: black;
 }

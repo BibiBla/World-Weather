@@ -1,3 +1,5 @@
+// current time function
+
 function formatTime() {
   let date = new Date();
   console.log(date);
@@ -27,6 +29,8 @@ function formatTime() {
 let currentTime = document.querySelector("#time");
 currentTime.innerHTML = formatTime();
 
+// temperature display (API)
+
 function displayTemperature(response) {
   console.log(response);
   let temperature = document.querySelector("#temperature");
@@ -37,6 +41,10 @@ function displayTemperature(response) {
   let windspeed = document.querySelector("#windspeed");
   let humidity = document.querySelector("#humidity");
   let icon = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+  celsiusMax = response.data.main.temp_max;
+  celsiusMin = response.data.main.temp_min;
 
   temperature.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
@@ -79,8 +87,55 @@ function showLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
-let citySearch = document.querySelector("#search-form");
-citySearch.addEventListener("submit", handleSubmit);
+// Celsius/Fahrenheit conversion
+
+let celsiusTemperature = null;
+let celsiusMax = null;
+let celsiusMin = null;
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  let currentCelsius = document.querySelector("#temperature");
+  currentCelsius.innerHTML = fahrenheitTemperature;
+  let fahrenheitMax = Math.round((celsiusMax * 9) / 5 + 32);
+  let tempMax = document.querySelector("#max-temp");
+  tempMax.innerHTML = fahrenheitMax;
+  let maxSymbol = document.querySelector("#celsius-max");
+  maxSymbol.innerHTML = "°F";
+  let fahrenheitMin = Math.round((celsiusMin * 9) / 5 + 32);
+  let fahrMin = document.querySelector("#min-temp");
+  fahrMin.innerHTML = fahrenheitMin;
+  let minSymbol = document.querySelector("#celsius-min");
+  minSymbol.innerHTML = "°F";
+  celsiusConverter.classList.remove("active");
+  fahrenheitConverter.classList.add("active");
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let currentCelsius = document.querySelector("#temperature");
+  currentCelsius.innerHTML = Math.round(celsiusTemperature);
+  let tempMax = document.querySelector("#max-temp");
+  tempMax.innerHTML = Math.round(celsiusMax);
+  let maxSymbol = document.querySelector("#celsius-max");
+  maxSymbol.innerHTML = "°C";
+  let tempMin = document.querySelector("#min-temp");
+  tempMin.innerHTML = Math.round(celsiusMin);
+  let minSymbol = document.querySelector("#celsius-min");
+  minSymbol.innerHTML = "°C";
+  fahrenheitConverter.classList.remove("active");
+  celsiusConverter.classList.add("active");
+}
+
+let fahrenheitConverter = document.querySelector("#fahrenheit");
+fahrenheitConverter.addEventListener("click", showFahrenheit);
+
+let celsiusConverter = document.querySelector("#celsius");
+celsiusConverter.addEventListener("click", showCelsius);
 
 let button = document.querySelector("#location");
 button.addEventListener("click", showLocation);
+
+let citySearch = document.querySelector("#search-form");
+citySearch.addEventListener("submit", handleSubmit);
