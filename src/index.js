@@ -67,10 +67,7 @@ function displayTemperature(response) {
   tempMin.innerHTML = Math.round(response.data.main.temp_min);
   windspeed.innerHTML = Math.round(response.data.wind.speed);
   humidity.innerHTML = Math.round(response.data.main.humidity);
-  icon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  icon.setAttribute("src", `src/img/${response.data.weather[0].icon}.png`);
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiKey = "4190a6ee70227a6b15b76f600409fe74";
@@ -89,9 +86,9 @@ function displayForecast(response) {
     <div class="col forecastColumns" >
       <div class="day-1">
         ${formatForecastTime(forecast.dt * 1000)}
-          <img src="https://openweathermap.org/img/wn/${
+          <img src="src/img/${
             forecast.weather[0].icon
-          }@2x.png" alt="" class="icon">
+          }.png" alt="" class="icon">
           <div class="forecast-temp-max">${Math.round(
             forecast.temp.max
           )} <span class="forecast-degree">°C</span></div>
