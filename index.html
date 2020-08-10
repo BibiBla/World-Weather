@@ -58,15 +58,21 @@
           <div class="col-3">
             <div class="max-min">
               <div class="max">
-                <div class="max-symbol">
-                  🌡 max
-                </div>
-                <div class="max-degree" id="max-temp">27</div>
+                <img
+                  class="max-symbol"
+                  src="src/img/temperaturemax.png"
+                  alt="max. temp."
+                />
+                <div class="max-degree" id="max-temp"></div>
                 <div class="celsius-max" id="celsius-max">°C</div>
               </div>
               <div class="min">
-                <div class="min-symbol">❄️ min</div>
-                <div class="min-degree" id="min-temp">9</div>
+                <img
+                  class="min-symbol"
+                  src="src/img/temperaturemin.png"
+                  alt="min. temp"
+                />
+                <div class="min-degree" id="min-temp"></div>
                 <div class="celsius-min" id="celsius-min">°C</div>
               </div>
             </div>
@@ -74,18 +80,15 @@
           <div class="col-3">
             <div class="wind">
               <div class="windspeed">Windspeed</div>
-              <div class="wind-symbol">
-                💨
-                <span class="windstrength" id="windspeed">6</span>
-                <span class="km">km/h</span>
-              </div>
+              <img class="wind-symbol" src="src/img/wind.png" alt="wind" />
+              <span class="windstrength" id="windspeed"></span>
+              <span class="km">km/h</span>
             </div>
             <div class="humidity">
               <div class="humidityValue">Humidity</div>
-              <div class="drop">
-                💧<span class="hum-value" id="humidity">80</span>
-                <span class="hum-percent">%</span>
-              </div>
+              <img class="drop" src="src/img/humidity.png" alt="%humidity" />
+              <span class="hum-value" id="humidity"></span>
+              <span class="hum-percent">%</span>
             </div>
           </div>
         </div>

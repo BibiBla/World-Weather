@@ -82,6 +82,8 @@ function displayForecast(response) {
   forecastElement.innerHTML = null;
   for (let index = 1; index < 6; index++) {
     forecast = response.data.daily[index];
+    forecastTempMin = forecast.temp.min;
+    forecastTempMax = forecast.temp.max;
     forecastElement.innerHTML += `
     <div class="col forecastColumns" >
       <div class="day-1">
@@ -89,10 +91,10 @@ function displayForecast(response) {
           <img src="src/img/${
             forecast.weather[0].icon
           }.png" alt="" class="icon">
-          <div class="forecast-temp-max">${Math.round(
+          <div class="forecast-temp-max" id = "forecast-max">${Math.round(
             forecast.temp.max
-          )} <span class="forecast-degree">°C</span></div>
-          <div class="forecast-temp-min">${Math.round(
+          )} <span class="forecast-degree" id = "forecast-celsius" >°C</span></div>
+          <div class="forecast-temp-min"id = "forecast-min">${Math.round(
             forecast.temp.min
           )} <span class="forecast-degree">°C</span></div>
       </div>
@@ -137,6 +139,8 @@ function showLocation() {
 let celsiusTemperature = null;
 let celsiusMax = null;
 let celsiusMin = null;
+let forecastTempMax = null;
+let forecastTempMin = null;
 
 function showFahrenheit(event) {
   event.preventDefault();
@@ -153,7 +157,15 @@ function showFahrenheit(event) {
   fahrMin.innerHTML = fahrenheitMin;
   let minSymbol = document.querySelector("#celsius-min");
   minSymbol.innerHTML = "°F";
-  celsiusConverter.classList.remove("active");
+
+  let forecastFahrenheitMax = Math.round((forecastTempMax * 9) / 5 + 32);
+  let forecastTempMaxFahrenheit = document.querySelector("#forecast-max");
+  forecastTempMaxFahrenheit.innerHTML = `${forecastFahrenheitMax} °F`;
+  let forecastFahrenheitMin = Math.round((forecastTempMin * 9) / 5 + 32);
+  let forecastTempMinFahrenheit = document.querySelector("#forecast-min");
+  forecastTempMinFahrenheit.innerHTML = `${forecastFahrenheitMin} °F`;
+
+  forecastMax = celsiusConverter.classList.remove("active");
   fahrenheitConverter.classList.add("active");
 }
 
@@ -171,6 +183,14 @@ function showCelsius(event) {
   minSymbol.innerHTML = "°C";
   fahrenheitConverter.classList.remove("active");
   celsiusConverter.classList.add("active");
+
+  let forecastCelsiusMax = Math.round(forecastTempMax);
+  let forecastTempMaxCelsius = document.querySelector("#forecast-max");
+  forecastTempMaxCelsius.innerHTML = `${forecastCelsiusMax} °C`;
+
+  let forecastCelsiusMin = Math.round(forecastTempMin);
+  let forecastTempMinCelsius = document.querySelector("#forecast-min");
+  forecastTempMinCelsius.innerHTML = `${forecastCelsiusMin} °C`;
 }
 
 let fahrenheitConverter = document.querySelector("#fahrenheit");

@@ -79,6 +79,17 @@ h3 {
 .hum-value {
   margin-left: 5px;
 }
+
+.max-min {
+  margin-top: 20px;
+}
+
+.max-symbol,
+.min-symbol,
+.wind-symbol,
+.drop {
+  width: 20px;
+}
 .max-degree,
 .celsius-max,
 .min-degree,
