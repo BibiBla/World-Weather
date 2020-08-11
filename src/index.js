@@ -82,21 +82,27 @@ function displayForecast(response) {
   forecastElement.innerHTML = null;
   for (let index = 1; index < 6; index++) {
     forecast = response.data.daily[index];
-    forecastTempMin = forecast.temp.min;
-    forecastTempMax = forecast.temp.max;
+
     forecastElement.innerHTML += `
-    <div class="col forecastColumns" >
+     <div class="col forecastColumns" >
       <div class="day-1">
         ${formatForecastTime(forecast.dt * 1000)}
-          <img src="src/img/${
+          <img  src="src/img/${
             forecast.weather[0].icon
           }.png" alt="" class="icon">
-          <div class="forecast-temp-max" id = "forecast-max">${Math.round(
-            forecast.temp.max
-          )} <span class="forecast-degree" id = "forecast-celsius" >°C</span></div>
-          <div class="forecast-temp-min"id = "forecast-min">${Math.round(
-            forecast.temp.min
-          )} <span class="forecast-degree">°C</span></div>
+            <div id = "forecast-max">
+            <span class="forecast-temp-max">${Math.round(
+              forecast.temp.max
+            )}</span>
+            <span class="forecast-degree" id = "forecast-celsius" >°C</span>
+            </div>
+            <div id = "forecast-min">
+            <span class="forecast-temp-min">${Math.round(
+              forecast.temp.min
+            )}</span>
+            <span class="forecast-degree" >°C</span>
+            </div>
+            
       </div>
     </div >
   `;
@@ -139,8 +145,6 @@ function showLocation() {
 let celsiusTemperature = null;
 let celsiusMax = null;
 let celsiusMin = null;
-let forecastTempMax = null;
-let forecastTempMin = null;
 
 function showFahrenheit(event) {
   event.preventDefault();
@@ -158,12 +162,26 @@ function showFahrenheit(event) {
   let minSymbol = document.querySelector("#celsius-min");
   minSymbol.innerHTML = "°F";
 
-  let forecastFahrenheitMax = Math.round((forecastTempMax * 9) / 5 + 32);
-  let forecastTempMaxFahrenheit = document.querySelector("#forecast-max");
-  forecastTempMaxFahrenheit.innerHTML = `${forecastFahrenheitMax} °F`;
-  let forecastFahrenheitMin = Math.round((forecastTempMin * 9) / 5 + 32);
-  let forecastTempMinFahrenheit = document.querySelector("#forecast-min");
-  forecastTempMinFahrenheit.innerHTML = `${forecastFahrenheitMin} °F`;
+  let forecastItems = document.querySelectorAll(".forecast-temp-max");
+  forecastItems.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    // grabbing the current value to convert--
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let forecastItemsMin = document.querySelectorAll(".forecast-temp-min");
+  forecastItemsMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    // grabbing the current value to convert---
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let forecastCelsiusSymbol = document.querySelectorAll(".forecast-degree");
+  forecastCelsiusSymbol.forEach(function (item) {
+    item.innerHTML = `°F`;
+  });
 
   forecastMax = celsiusConverter.classList.remove("active");
   fahrenheitConverter.classList.add("active");
@@ -181,16 +199,30 @@ function showCelsius(event) {
   tempMin.innerHTML = Math.round(celsiusMin);
   let minSymbol = document.querySelector("#celsius-min");
   minSymbol.innerHTML = "°C";
+
+  let forecastItems = document.querySelectorAll(".forecast-temp-max");
+  forecastItems.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    // grabbing the current value to convert---
+    // convert to Celsius
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  let forecastItemsMin = document.querySelectorAll(".forecast-temp-min");
+  forecastItemsMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    // grabbing the current value to convert--
+    // convert to Fahrenheit
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  let forecastFahrenheitSymbol = document.querySelectorAll(".forecast-degree");
+  forecastFahrenheitSymbol.forEach(function (item) {
+    item.innerHTML = `°C`;
+  });
+
   fahrenheitConverter.classList.remove("active");
   celsiusConverter.classList.add("active");
-
-  let forecastCelsiusMax = Math.round(forecastTempMax);
-  let forecastTempMaxCelsius = document.querySelector("#forecast-max");
-  forecastTempMaxCelsius.innerHTML = `${forecastCelsiusMax} °C`;
-
-  let forecastCelsiusMin = Math.round(forecastTempMin);
-  let forecastTempMinCelsius = document.querySelector("#forecast-min");
-  forecastTempMinCelsius.innerHTML = `${forecastCelsiusMin} °C`;
 }
 
 let fahrenheitConverter = document.querySelector("#fahrenheit");
@@ -205,4 +237,4 @@ button.addEventListener("click", showLocation);
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", handleSubmit);
 
-search("Hamburg");
+search("Lisbon");
