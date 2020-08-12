@@ -31,7 +31,7 @@ h3 {
 .time-day {
   padding: 10px 40px;
   float: right;
-  margin-right: 20px;
+  margin-right: 15px;
   font-size: 28px;
   background-color: rgba(255, 255, 255, 0.2);
   border: 2px solid #ff719a;
@@ -44,7 +44,7 @@ h3 {
 }
 .form-control {
   width: 200px;
-  margin-right: 20px;
+  margin-right: 10px;
   display: inline;
 }
 
