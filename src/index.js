@@ -2,7 +2,6 @@
 
 function formatTime() {
   let date = new Date();
-  console.log(date);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -46,7 +45,6 @@ function formatForecastTime(timestamp) {
 // temperature display (API)
 
 function displayTemperature(response) {
-  console.log(response);
   let temperature = document.querySelector("#temperature");
   let city = document.querySelector("#city");
   let description = document.querySelector("#description");
@@ -185,6 +183,10 @@ function showFahrenheit(event) {
 
   forecastMax = celsiusConverter.classList.remove("active");
   fahrenheitConverter.classList.add("active");
+  let fahrenheitLink = document.querySelector("#fahrenheit");
+  fahrenheitLink.removeEventListener("click", showFahrenheit);
+  let celsiusLink = document.querySelector("#celsius");
+  celsiusLink.addEventListener("click", showCelsius);
 }
 
 function showCelsius(event) {
@@ -223,6 +225,10 @@ function showCelsius(event) {
 
   fahrenheitConverter.classList.remove("active");
   celsiusConverter.classList.add("active");
+  let fahrenheitLink = document.querySelector("#fahrenheit");
+  fahrenheitLink.addEventListener("click", showFahrenheit);
+  let celsiusLink = document.querySelector("#celsius");
+  celsiusLink.removeEventListener("click", showCelsius);
 }
 
 let fahrenheitConverter = document.querySelector("#fahrenheit");
